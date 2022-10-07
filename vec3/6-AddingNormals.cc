@@ -1,3 +1,6 @@
+// Colouring our sphere to get a sense of 3 dimensionality
+// doing this by getting the normals at the intersection points and converting the normal vectors to rgb values
+
 #include "vec3.h"
 #include "colour.h"
 #include "ray.h"
@@ -15,16 +18,16 @@
 */
 double hit_sphere(const point3& center, double radius, const ray &r) {
     vec3 oc = r.origin() - center;
-    auto a = dot(r.direction(), r.direction());
-    auto b = 2.0 * dot(r.direction(), oc);
-    auto c = dot(oc, oc) - radius*radius;
-    auto discriminant = b*b - 4 * a * c;
+    auto a = r.direction().length_squared();
+    auto half_b = dot(r.direction(), oc);
+    auto c = oc.length_squared() - radius*radius;
+    auto discriminant = half_b * half_b - a * c;
     if (discriminant < 0.0) {            // don't completely understand why we return -1 here, can t not be negative?
         return -1.0;
     } else {
         // since the rays are all facing towards the sphere, solving for their intersection with the
         // sphere must return a positive scaling of the ray's direction vector
-        return (-b - sqrt(discriminant)) / (2.0 * a);
+        return (-half_b - sqrt(discriminant)) / a;
         // taking the solution with the negative sqrt(discriminant) gives us the first intersection with the sphere
     }
 }
