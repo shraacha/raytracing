@@ -15,7 +15,7 @@ public:
     point3 origin () const { return orig; }
     vec3 direction () const { return dir; }
 
-    // vector equation of a line in 3D
+    // vector equation of a line in 3D, this allows us to get any point along the ray's path
     point3 at (double t) const {
         return orig + t * dir;
     }

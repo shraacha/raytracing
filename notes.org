@@ -1,0 +1,46 @@
+#+title: Notes
+
+* Raytracer components:
+- Vector class,
+- colour class
+- point class
+These can all be represented by the same class (and by aliasing).
+
+At it's core though, our raytracer does the job of sending rays through each pixel of the screen and calculating the colour seen at each point.
+
+This is done through three main steps:
+ 1. calculating the ray from the eye to the pixel
+ 2. finding what objects the ray intersects with
+ 3. computing the colour at the intersection
+
+** Linear Interpolations (LERP)
+blendedValue= (1 − t) * startValue + t * endValue
+
+* Spheres
+Spheres are often used in ray tracers because it's pretty simple to figure out if a ray hits a sphere.
+
+A sphere can be represented like so:
+- if x^2 + y^2 + z^2 = r^2, then the point is on the surface of the sphere
+- if < r^2, point is within the sphere, if > r^2, the point is outside
+
+simple, right
+
+now a sphere with center point C can be represented by:
+(x - C_x)^2 + (y - C_y)^2 + (z - C_z)^2 = r^2
+
+let `P` represent the point we wish to check is on the sphere, and `C` represent the center of the sphere. We can then use the formula:
+(P_x - C_x)^2 + (P_y - C_y)^2 + (P_z - C_z)^2 = r^2
+
+using vector notation we can use the formula:
+(P - C) (dot) (P - C) = r^2
+
+now, using our formula for rays,
+
+TODO - finish this section
+
+* Abstraction - Hittable Objects
+Here, we have hardcoded our ray collision with our sphere... what if we want more objects?
+
+Using OOP, we can create a pure abstract class that can be inherited by any number of objects. This abstract class should provide the functionality of having a "hit registration" sort of method.
+
+> refer to `hittable.h` and `sphere.h`
