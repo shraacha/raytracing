@@ -22,7 +22,7 @@ double hit_sphere(const point3& center, double radius, const ray &r) {
     auto half_b = dot(r.direction(), oc);
     auto c = oc.length_squared() - radius*radius;
     auto discriminant = half_b * half_b - a * c;
-    if (discriminant < 0.0) {            // don't completely understand why we return -1 here, can t not be negative?
+    if (discriminant < 0.0) {            // if the discriminant is < 0, i.e. somehow the point of intersection is behind the origin of the ray, we want to ignore it?
         return -1.0;
     } else {
         // since the rays are all facing towards the sphere, solving for their intersection with the
