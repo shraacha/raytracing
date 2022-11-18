@@ -41,6 +41,13 @@ TODO - finish this section
 * Abstraction - Hittable Objects
 Here, we have hardcoded our ray collision with our sphere... what if we want more objects?
 
-Using OOP, we can create a pure abstract class that can be inherited by any number of objects. This abstract class should provide the functionality of having a "hit registration" sort of method.
+Using OOP, we can create a pure abstract class that can be inherited by any number of objects. This abstract class should provide the functionality of having a "hit registration" sort of method. This "hit reg" method would take in a ray and check whether that ray intersects a hittable.
+
+Different shaped hittables can inherit from this class to provide their own unique hitreg algorithms.
+
+Furthermore, we can create a list of hittables that encompass our "world" in which we could also decide the precedence of hittables: i.e. which hittable would actually be seen by the viewer in the case that two hittables overlap with each other in the z axis, for example.
 
 > refer to `hittable.h` and `sphere.h`
+
+* 7 - Antialiasing
+You may notice that the edges of the sphere we've now drawn has quite the jagged edges. This can be fixed using **antialiasing**
