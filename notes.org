@@ -51,3 +51,9 @@ Furthermore, we can create a list of hittables that encompass our "world" in whi
 
 * 7 - Antialiasing
 You may notice that the edges of the sphere we've now drawn has quite the jagged edges. This can be fixed using **antialiasing**
+
+One technique used for antialiasing is *stratification* (read more online).
+
+In this intro, we will not be using this.
+
+The camera classs will be abstracted a bit so that it can be made cooler later.

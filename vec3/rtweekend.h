@@ -1,6 +1,7 @@
 #ifndef RTWEEKEND_H_
 #define RTWEEKEND_H_
 
+#include <cstdlib>
 #include <cmath>
 #include <limits>
 #include <memory>
