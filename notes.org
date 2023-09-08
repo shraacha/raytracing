@@ -1,5 +1,11 @@
 #+title: Notes
 
+* Homogenous Coordinates
+For 3D points, a 4th "homogenous" coordinate is sometimes added. This coordinate represents the distance from the camera.
+
+This coordiate is used to scale the point, along with others, with respect to the camera.
+
+
 * Raytracer components:
 - Vector class,
 - colour class
