@@ -11,9 +11,7 @@ fn main() {
 
     // Render
 
-    writeln!(out, "P3").unwrap();
-    writeln!(out, "{image_width} {image_height}").unwrap();
-    writeln!(out, "255").unwrap();
+    writeln!(out, "P3\n{image_width} {image_height}\n255").unwrap();
 
     for j in 0..image_height {
         write!(err, "\rScanlines remaining: {prog} ", prog = image_height - j).unwrap();

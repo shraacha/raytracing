@@ -1,2 +1,5 @@
 # Generated files
 /r1w-rust/target/
+
+/r1w-cpp/.DS_Store
+/r1w-cpp/vec3/.DS_Store
