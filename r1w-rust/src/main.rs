@@ -1,4 +1,12 @@
+mod color;
+mod point;
+mod vec;
+
 use std::io::prelude::*;
+
+use color::Color;
+use point::Point3D;
+use vec::Vec3D;
 
 fn main() {
     // Bufwriter
@@ -6,7 +14,7 @@ fn main() {
     let mut err = std::io::BufWriter::new(std::io::stderr().lock());
 
     // Image
-    let image_width:  i32 = 256;
+    let image_width: i32 = 256;
     let image_height: i32 = 256;
 
     // Render
@@ -14,17 +22,21 @@ fn main() {
     writeln!(out, "P3\n{image_width} {image_height}\n255").unwrap();
 
     for j in 0..image_height {
-        write!(err, "\rScanlines remaining: {prog} ", prog = image_height - j).unwrap();
+        write!(
+            err,
+            "\rScanlines remaining: {prog} ",
+            prog = image_height - j
+        )
+        .unwrap();
+
         for i in 0..image_width {
-            let r = i as f64 / (image_width - 1) as f64;
-            let g = j as f64 / (image_height - 1) as f64;
-            let b = 0 as f64;
+            let pixel_color: Color = Color::new_eat(Point3D::new_with(
+                (i as f64) / (image_width - 1) as f64,
+                (j as f64) / (image_width - 1) as f64,
+                0.0,
+            ));
 
-            let ir: i32 = (255.999 * r) as i32;
-            let ig: i32 = (255.999 * g) as i32;
-            let ib: i32 = (255.999 * b) as i32;
-
-            writeln!(out, "{ir} {ig} {ib}").unwrap();
+            writeln!(out, "{pixel_color}").unwrap();
         }
     }
 
