@@ -7,11 +7,7 @@ pub struct Point3D {
 
 // operators and stuff
 impl Point3D {
-    pub fn new() -> Self {
-        Self::default()
-    }
-
-    pub fn new_with(x: f64, y: f64, z: f64) -> Self {
+    pub fn new(x: f64, y: f64, z: f64) -> Self {
         Self { e: [x, y, z] }
     }
 
@@ -27,14 +23,14 @@ impl Point3D {
         self.e[2]
     }
 
-    pub fn mul_with_f64(&self, rhs: &f64) -> Self {
+    pub fn mul_with_f64(&self, rhs: f64) -> Self {
         Self {
             e: [self.e[0] * rhs, self.e[1] * rhs, self.e[2] * rhs],
         }
     }
 
-    pub fn div_with_f64(&self, rhs: &f64) -> Self {
-        self.mul_with_f64(&(1.0 / rhs))
+    pub fn div_with_f64(&self, rhs: f64) -> Self {
+        self.mul_with_f64(1.0 / rhs)
     }
 }
 

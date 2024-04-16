@@ -2,10 +2,11 @@ use crate::point::Point3D;
 
 use std::ops::Deref;
 
+#[derive(Clone, Copy, Default, Debug)]
 pub struct Color(Point3D);
 
 impl Color {
-    pub fn new_eat(point: Point3D) -> Self {
+    pub fn new(point: Point3D) -> Self {
         Color(point)
     }
 }

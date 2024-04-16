@@ -8,7 +8,7 @@ This coordiate is used to scale the point, along with others, with respect to th
 
 * Raytracer components:
 - Vector class,
-- colour class
+- color class
 - point class
 These can all be represented by the same class (and by aliasing).
 
@@ -21,6 +21,12 @@ This is done through three main steps:
 
 ** Linear Interpolations (LERP)
 blendedValue= (1 − t) * startValue + t * endValue
+
+* some implementation details
+
+We use right hand coords, with ~negative z-axis~ pointing in the viewing direcition, and positive y-axis going up.
+
+For our image, we start with the upper left pixel at (0, 0).
 
 * Spheres
 Spheres are often used in ray tracers because it's pretty simple to figure out if a ray hits a sphere.
